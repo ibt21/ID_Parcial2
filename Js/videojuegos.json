@@ -1,0 +1,124 @@
+{
+  "videojuegos": [
+    {
+      "id": 1,
+      "titulo": "Tomb Raider",
+      "descripcion": "Aventurera en busca de tesoros antiguos y tumbas misteriosas",
+      "plataforma": "PC, PlayStation, Xbox"
+    },
+    {
+      "id": 2,
+      "titulo": "Buscaminas",
+      "descripcion": "Clásico juego de estrategia para encontrar minas en un tablero",
+      "plataforma": "PC"
+    },
+    {
+      "id": 3,
+      "titulo": "Mortal Kombat",
+      "descripcion": "Juego de lucha con fatalities y personajes icónicos",
+      "plataforma": "PlayStation, Xbox, Nintendo Switch"
+    },
+    {
+      "id": 4,
+      "titulo": "Bioshock",
+      "descripcion": "Shooter en primera persona en la ciudad submarina de Rapture",
+      "plataforma": "PC, PlayStation, Xbox"
+    },
+    {
+      "id": 5,
+      "titulo": "Peak",
+      "descripcion": "Juego de puzzle y estrategia con desafíos mentales",
+      "plataforma": "Mobile"
+    },
+    {
+      "id": 6,
+      "titulo": "Resident Evil",
+      "descripcion": "Survival horror con zombies y criaturas mutantes",
+      "plataforma": "PlayStation, PC, Xbox"
+    },
+    {
+      "id": 7,
+      "titulo": "Pokémon Perla",
+      "descripcion": "Aventura para capturar y entrenar pokémons en la región de Sinnoh",
+      "plataforma": "Nintendo DS"
+    },
+    {
+      "id": 8,
+      "titulo": "Fortnite",
+      "descripcion": "Battle royale con construcción y modos multijugador",
+      "plataforma": "PC, PlayStation, Xbox, Nintendo Switch, Mobile"
+    },
+    {
+      "id": 9,
+      "titulo": "Alice Madness Returns",
+      "descripcion": "Aventura oscura en el mundo perturbado de Alicia",
+      "plataforma": "PC, PlayStation, Xbox"
+    },
+    {
+      "id": 10,
+      "titulo": "Stardew Valley",
+      "descripcion": "Simulación de granja y vida rural con relaciones sociales",
+      "plataforma": "PC, PlayStation, Xbox, Nintendo Switch, Mobile"
+    },
+    {
+      "id": 11,
+      "titulo": "The Legend of Zelda: Breath of the Wild",
+      "descripcion": "Aventura de mundo abierto en el reino de Hyrule",
+      "plataforma": "Nintendo Switch, Wii U"
+    },
+    {
+      "id": 12,
+      "titulo": "Minecraft",
+      "descripcion": "Sandbox de construcción y supervivencia en un mundo de bloques",
+      "plataforma": "PC, PlayStation, Xbox, Nintendo Switch, Mobile"
+    },
+    {
+      "id": 13,
+      "titulo": "Grand Theft Auto V",
+      "descripcion": "Mundo abierto criminal en la ciudad de Los Santos",
+      "plataforma": "PC, PlayStation, Xbox"
+    },
+    {
+      "id": 14,
+      "titulo": "The Witcher 3: Wild Hunt",
+      "descripcion": "RPG de fantasía épica como cazador de monstruos",
+      "plataforma": "PC, PlayStation, Xbox, Nintendo Switch"
+    },
+    {
+      "id": 15,
+      "titulo": "Cyberpunk 2077",
+      "descripcion": "RPG futurista en la ciudad distópica de Night City",
+      "plataforma": "PC, PlayStation, Xbox"
+    },
+    {
+      "id": 16,
+      "titulo": "Red Dead Redemption 2",
+      "descripcion": "Aventura del lejano oeste como forajido",
+      "plataforma": "PC, PlayStation, Xbox"
+    },
+    {
+      "id": 17,
+      "titulo": "God of War",
+      "descripcion": "Aventura épica nórdica con Kratos y su hijo Atreus",
+      "plataforma": "PlayStation, PC"
+    },
+    {
+      "id": 18,
+      "titulo": "Hollow Knight",
+      "descripcion": "Metroidvania en un reino de insectos en ruinas",
+      "plataforma": "PC, PlayStation, Xbox, Nintendo Switch"
+    },
+    {
+      "id": 19,
+      "titulo": "Celeste",
+      "descripcion": "Plataformas desafiantes sobre escalar una montaña",
+      "plataforma": "PC, PlayStation, Xbox, Nintendo Switch"
+    },
+    {
+      "id": 20,
+      "titulo": "Hades",
+      "descripcion": "Roguelike de acción en el inframundo griego",
+      "plataforma": "PC, PlayStation, Xbox, Nintendo Switch"
+    }
+  ]
+}

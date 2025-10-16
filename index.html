@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Css/estilo.css">
+    <title>Gestor de Videojuegos</title>
+</head>
+
+<body>
+    <header class="cabecera">
+        <h1>🎮 Mi Colección de Videojuegos</h1>
+        <p>Gestiona tu lista de videojuegos favoritos</p>
+    </header>
+
+    <main class="contenedor-principal">
+        <!-- Sección del Formulario -->
+        <section class="seccion-formulario">
+            <h2>Agregar Nuevo Videojuego</h2>
+            <form id="form-videojuego">
+                <input type="hidden" id="videojuego-id">
+                
+                <div class="grupo-formulario">
+                    <label for="titulo">Título del Videojuego:</label>
+                    <input type="text" id="titulo" name="titulo" placeholder="Ej: The Legend of Zelda" required>
+                </div>
+
+                <div class="grupo-formulario">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" placeholder="Describe el videojuego..." rows="3" required></textarea>
+                </div>
+
+                <div class="grupo-formulario">
+                    <label for="plataforma">Plataforma:</label>
+                    <input type="text" id="plataforma" name="plataforma" placeholder="Ej: PC, PlayStation, Xbox, Nintendo Switch" required>
+                </div>
+
+                <div class="controles-formulario">
+                    <button type="submit" id="btn-guardar">Guardar Videojuego</button>
+                    <button type="button" id="btn-nuevo">Nuevo Videojuego</button>
+                    <button type="reset" id="btn-cancelar">Cancelar</button>
+                </div>
+            </form>
+
+            <!-- Área de mensajes -->
+            <div id="mensajes" class="mensaje"></div>
+        </section>
+
+        <!-- Sección de la Lista de Videojuegos -->
+        <section class="seccion-lista">
+            <h2>Mi Lista de Videojuegos</h2>
+            <div class="estadisticas">
+                <span id="contador-videojuegos">0 videojuegos en la lista</span>
+            </div>
+            <div class="lista-videojuegos" id="lista-videojuegos">
+                <!-- Las tarjetas de videojuegos se generarán aquí dinámicamente -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="pie-pagina">
+        <p>&copy; 2024 Gestor de Videojuegos - Todos los derechos reservados</p>
+    </footer>
+
+    <script type="module" src="Js/main.js"></script>
+</body>
+</html>
