@@ -1,33 +1,48 @@
-import { convertir_de_JSON_a_Objeto, convertir_de_Objeto_a_JSON } from "./ayudad.js";
-import { Videojuego } from "./definiciones.js";
 import { GestorVideojuegos } from "./gestorVideojuegos.js";
-import { ControladorVista } from "./controladorVista.js";
+import { ControladorVista } from "./controlador_vista.js";
 
-// Inicializar la aplicación
+/**
+ * Función para cargar datos desde un archivo JSON
+ */
+async function cargarDatosJSON(url) {
+    try {
+        const respuesta = await fetch(url);
+        if (!respuesta.ok) {
+            throw new Error(`Error al cargar los datos: ${respuesta.status}`);
+        }
+        const datos = await respuesta.json();
+        return datos.videojuegos || datos; // Manejar ambos formatos
+    } catch (error) {
+        console.error('Error cargando datos:', error);
+        throw error;
+    }
+}
+
+/**
+ * Función principal que inicializa la aplicación
+ */
 async function inicializarAplicacion() {
     try {
+        // Crear instancia del gestor de videojuegos
         const gestorVideojuegos = new GestorVideojuegos();
         
-        // Cargar datos del JSON
-        const datosVideojuegos = await convertir_de_JSON_a_Objeto('js/videojuegos.json');
-        gestorVideojuegos.CargarListaVideojuegos(datosVideojuegos);
+        // Cargar datos iniciales desde el archivo JSON
+        const datosIniciales = await cargarDatosJSON('js/videojuegos.json');
+        gestorVideojuegos.cargarListaVideojuegos(datosIniciales);
         
-        // Inicializar controlador de vista
+        // Crear instancia del controlador de vista
         const controladorVista = new ControladorVista(gestorVideojuegos);
+        
+        // Inicializar la interfaz
         controladorVista.inicializar();
         
         console.log('Aplicación inicializada correctamente');
         
     } catch (error) {
         console.error('Error al inicializar la aplicación:', error);
-        // Mostrar error en la interfaz si es posible
-        const mensajes = document.getElementById('mensajes');
-        if (mensajes) {
-            mensajes.textContent = 'Error al cargar la aplicación: ' + error.message;
-            mensajes.className = 'mensaje error';
-        }
+        alert('Error al cargar la aplicación. Por favor, recarga la página.');
     }
 }
 
-// Iniciar la aplicación cuando el DOM esté listo
+// Inicializar la aplicación cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', inicializarAplicacion);

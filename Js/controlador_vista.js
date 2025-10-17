@@ -3,31 +3,35 @@ import { GestorVideojuegos } from "./gestorVideojuegos.js";
 export class ControladorVista {
     constructor(gestorVideojuegos) {
         this.gestor = gestorVideojuegos;
-        this.contenedor = document.getElementById('lista-videojuegos');
+        this.contenedorElementos = document.getElementById('lista-videojuegos');
         this.formulario = document.getElementById('form-videojuego');
         this.mensajes = document.getElementById('mensajes');
     }
 
-    // Crear tarjetas dinámicamente
+    /**
+     * Crear tarjetas dinámicamente para todos los videojuegos
+     */
     crearTarjetas() {
-        if (!this.contenedor) return;
+        if (!this.contenedorElementos) return;
 
-        this.contenedor.innerHTML = '';
+        this.contenedorElementos.innerHTML = '';
 
         try {
             const videojuegos = this.gestor.obtenerLista();
 
             videojuegos.forEach(videojuego => {
                 const tarjeta = this.crearTarjeta(videojuego);
-                this.contenedor.appendChild(tarjeta);
-                this.actualizarContador()
+                this.contenedorElementos.appendChild(tarjeta);
             });
+            this.actualizarContador();
         } catch (error) {
             this.mostrarMensaje(error.message, 'error');
         }
     }
 
-    // Crear una tarjeta individual
+    /**
+     * Crear una tarjeta individual para un videojuego
+     */
     crearTarjeta(videojuego) {
         const tarjeta = document.createElement('div');
         tarjeta.className = 'videojuego-card';
@@ -51,7 +55,9 @@ export class ControladorVista {
         return tarjeta;
     }
 
-    // Manejar edición de videojuego
+    /**
+     * Manejar edición de videojuego
+     */
     editarVideojuego(id) {
         try {
             const videojuego = this.gestor.obtenerPorId(id);
@@ -61,7 +67,9 @@ export class ControladorVista {
         }
     }
 
-    // Mostrar formulario para edición
+    /**
+     * Mostrar formulario para edición con datos del videojuego
+     */
     mostrarFormularioEdicion(videojuego) {
         if (!this.formulario) return;
 
@@ -73,21 +81,25 @@ export class ControladorVista {
         this.mostrarMensaje(`Editando: ${videojuego.titulo}`, 'info');
     }
 
-    // Eliminar videojuego
+    /**
+     * Eliminar videojuego después de confirmación
+     */
     eliminarVideojuego(id) {
         if (confirm('¿Estás seguro de que quieres eliminar este videojuego?')) {
             try {
                 const eliminado = this.gestor.eliminar(id);
                 this.crearTarjetas();
                 this.mostrarMensaje(`Videojuego "${eliminado.titulo}" eliminado correctamente`, 'exito');
-                this.actualizarContador()
+                this.actualizarContador();
             } catch (error) {
                 this.mostrarMensaje(error.message, 'error');
             }
         }
     }
 
-    // Manejar envío del formulario
+    /**
+     * Manejar envío del formulario para crear o actualizar videojuegos
+     */
     manejarEnvioFormulario() {
         if (!this.formulario) return;
 
@@ -111,7 +123,8 @@ export class ControladorVista {
                     this.mostrarMensaje('Videojuego actualizado correctamente', 'exito');
                 } else {
                     // Crear nuevo
-                    const nuevoId = Math.max(...this.gestor.obtenerLista().map(v => v.id)) + 1;
+                    const videojuegos = this.gestor.obtenerLista();
+                    const nuevoId = videojuegos.length > 0 ? Math.max(...videojuegos.map(v => v.id)) + 1 : 1;
                     this.gestor.agregar({ id: nuevoId, titulo, descripcion, plataforma });
                     this.mostrarMensaje('Videojuego agregado correctamente', 'exito');
                 }
@@ -124,13 +137,19 @@ export class ControladorVista {
         });
     }
 
-    // Limpiar formulario
+    /**
+     * Limpiar formulario para nuevo registro
+     */
     limpiarFormulario() {
         if (!this.formulario) return;
 
         this.formulario.reset();
         document.getElementById('videojuego-id').value = '';
     }
+
+    /**
+     * Actualizar contador de videojuegos en la interfaz
+     */
     actualizarContador() {
         const contador = document.getElementById('contador-videojuegos');
         if (contador) {
@@ -138,7 +157,10 @@ export class ControladorVista {
             contador.textContent = `${cantidad} videojuego${cantidad !== 1 ? 's' : ''} en la lista`;
         }
     }
-    // Mostrar mensajes al usuario
+
+    /**
+     * Mostrar mensajes al usuario
+     */
     mostrarMensaje(mensaje, tipo) {
         if (!this.mensajes) return;
 
@@ -151,11 +173,13 @@ export class ControladorVista {
         }, 5000);
     }
 
-    // Inicializar el controlador
+    /**
+     * Inicializar el controlador y configurar event listeners
+     */
     inicializar() {
         this.crearTarjetas();
         this.manejarEnvioFormulario();
-        this.actualizarContador(); // Agregar esta línea
+        this.actualizarContador();
 
         // Botón para nuevo videojuego
         const btnNuevo = document.getElementById('btn-nuevo');
